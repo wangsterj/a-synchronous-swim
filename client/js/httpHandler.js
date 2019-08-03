@@ -1,10 +1,33 @@
-(function() {
 
   const serverUrl = 'http://127.0.0.1:3000';
 
   //
   // TODO: build the swim command fetcher here
   //
+  const swimCommandFetcher = (direction) => {
+    var formData = new FormData();
+    formData.append('direction', direction);
+    $.ajax({
+      type: 'GET',
+      data: formData,
+      url: serverUrl,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: (data) => {
+        console.log(data)
+        // SwimTeam.move(data);
+      }
+    });
+  };
+
+  // $('body').on('keydown', (event) => {
+  //   var arrowPress = event.key.match(/Arrow(Up|Down|Left|Right)/);
+  //   if (arrowPress) {
+  //     var direction = arrowPress[1];
+  //     swimCommandFetcher(direction)
+  //   }
+  // });
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
@@ -17,7 +40,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: serverUrl,
       cache: false,
       contentType: false,
       processData: false,
@@ -45,5 +68,3 @@
 
     ajaxFileUplaod(file);
   });
-
-})();

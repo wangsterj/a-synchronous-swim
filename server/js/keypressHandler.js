@@ -27,7 +27,6 @@ const logKeypress = (key) => {
 var message = ''; // a buffer to collect key presses
 
 module.exports.initialize = (callback) => {
-
   // setup an event handler on standard input
   process.stdin.on('keypress', (chunk, key) => {
     // ctrl+c should quit the program
@@ -40,7 +39,7 @@ module.exports.initialize = (callback) => {
       callback(key.name);
       return; // don't do any more processing on this key
     }
-    
+
     // otherwise build up a message from individual characters
     if (key && (key.name === 'return' || key.name === 'enter')) {
       // on enter, process the message
