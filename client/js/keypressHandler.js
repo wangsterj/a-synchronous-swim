@@ -11,8 +11,7 @@ $('body').on('keydown', (event) => {
   var arrowPress = event.key.match(/Arrow(Up|Down|Left|Right)/);
   if (arrowPress) {
     var direction = arrowPress[1];
-
-    swimCommandFetcher(direction)
+    SwimTeam.move(direction.toLowerCase())
   }
 });
 

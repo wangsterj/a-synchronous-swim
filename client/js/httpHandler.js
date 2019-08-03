@@ -4,22 +4,19 @@
   //
   // TODO: build the swim command fetcher here
   //
-  const swimCommandFetcher = (direction) => {
-    var formData = new FormData();
-    formData.append('direction', direction);
+
+  const swimCommandFetcher = () => {
     $.ajax({
       type: 'GET',
-      data: formData,
-      url: serverUrl,
-      cache: false,
-      contentType: false,
+      url: serverUrl+"/command",
       processData: false,
       success: (data) => {
-        console.log(data)
-        // SwimTeam.move(data);
+        SwimTeam.move(data);
       }
     });
   };
+
+  // setInterval(swimCommandFetcher, 1000);
 
   // $('body').on('keydown', (event) => {
   //   var arrowPress = event.key.match(/Arrow(Up|Down|Left|Right)/);
@@ -28,6 +25,21 @@
   //     swimCommandFetcher(direction)
   //   }
   // });
+
+  // const getImage = () => {
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: serverUrl+"/background.jpg",
+  //     processData: false,
+  //     success: (data) => {
+  //       console.log(data);
+  //     }
+  //   });
+  // };
+
+  // $('body').on('click', () => {
+  //   getImage();
+  //   });
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
@@ -40,7 +52,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: serverUrl,
+      url: serverUrl +"/background.jpg",
       cache: false,
       contentType: false,
       processData: false,
